@@ -55,6 +55,8 @@ namespace Lab6
             TestStrategy(new LinearProbing<int>(), "Linear Probing", keyList, tableSize);
             TestStrategy(new QuadraticProbing<int>(), "Quadratic Probing", keyList, tableSize);
             TestStrategy(new DoubleHashing<int>(), "Double Hashing", keyList, tableSize);
+            TestStrategy(new CubeHashing<int>(), "Cube Hashing", keyList, tableSize);
+            TestStrategy(new PseudoRandomHashing<int>(), "Pseudo Random Hashing", keyList, tableSize);
         }
 
         static void TestStrategy(IProbingStrategy<int> strategy, string strategyName, List<int> keys, int tableSize)

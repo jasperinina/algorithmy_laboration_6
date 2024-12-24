@@ -38,6 +38,25 @@ public class DoubleHashing<TKey> : IProbingStrategy<TKey>
     }
 }
 
+// Кубическое хеширование
+public class CubeHashing<TKey> : IProbingStrategy<TKey>
+{
+    public int Probe(int initialIndex, int step, int tableSize, TKey key)
+    {
+        return (initialIndex + step * step * step) % tableSize;
+    }
+}
+// Псевдослучайное хэширование
+public class PseudoRandomHashing<TKey> : IProbingStrategy<TKey>
+{
+    public int Probe(int initialIndex, int step, int tableSize, TKey key)
+    {
+        int[] randomSteps = { 3, 5, 7, 2, 9, 4, 6, 8, 1, 0 };
+
+        int randomStep = randomSteps[step % randomSteps.Length];
+        return (initialIndex + randomStep) % tableSize;
+    }
+}
 public class HashTableOpenAddressing<TKey, TValue>
 {
     public int capacity; 
@@ -233,7 +252,7 @@ public class HashTableOpenAddressing<TKey, TValue>
 
         for (int i = 0; i < entries.Length; i++)
         {
-            if (entries[i].Key != null && !entries[i].IsDeleted)
+            if (entries[i].Value != null && !entries[i].IsDeleted)
             {
                 currentClusterLength++;
             }
@@ -243,7 +262,7 @@ public class HashTableOpenAddressing<TKey, TValue>
                 {
                     maxClusterLength = currentClusterLength;
                 }
-                currentClusterLength = 0; 
+                currentClusterLength = 0;
             }
         }
 
