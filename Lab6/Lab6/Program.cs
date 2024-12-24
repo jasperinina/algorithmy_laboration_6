@@ -21,7 +21,7 @@ namespace Lab6
                 switch (choice)
                 {
                     case "1":
-                        // в процессе
+                        TestHashTableChain();
                         break;
                     case "2":
                         TestHashTableOpenAddressing();
@@ -79,6 +79,47 @@ namespace Lab6
 
             Console.WriteLine($"Время вставки: {stopwatch.ElapsedMilliseconds} мс");
             Console.WriteLine($"Самый длинный кластер: {longestCluster}");
+        }
+
+        static void TestHashTableChain()
+        {
+            int[] keys = new int[100000];
+            Random random = new Random();
+
+            for (int i = 0; i < 100000; i++)
+            {
+                keys[i] = random.Next(0, 10000000);
+            }
+
+            foreach (HashTableChain<int, string>.HashMethod method in Enum.GetValues(typeof(HashTableChain<int, string>.HashMethod)))
+            {
+                Console.WriteLine($"Хеш-функция: {method}");
+                HashTableChain<int, string> hashTable = new HashTableChain<int, string>(method);
+
+                var stopwatch = Stopwatch.StartNew();
+
+                foreach (int key in keys)
+                {
+                    hashTable.Insert(key, $"Value {key}");
+                }
+
+                stopwatch.Stop();
+
+                // Время вставки
+                Console.WriteLine($"Время вставки: {stopwatch.ElapsedMilliseconds} мс");
+
+                // Подсчет коэффициента заполнения
+                Console.WriteLine($"Коэффициент заполнения: {hashTable.GetLoadFactor()}");
+
+                // Длина самой длинной цепочки
+                Console.WriteLine($"Длина самой длинной цепочки: {hashTable.GetLongestChainLength()}");
+
+                // Длина самой короткой цепочки
+                Console.WriteLine($"Длина самой короткой цепочки: {hashTable.GetShortestChainLength()}");
+
+                Console.WriteLine();
+
+            }
         }
     }
 }
