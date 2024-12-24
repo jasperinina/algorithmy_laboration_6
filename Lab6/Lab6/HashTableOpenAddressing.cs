@@ -59,7 +59,8 @@ public class HashTableOpenAddressing<TKey, TValue>
         capacity = 10000;
         entries = new Entry[10000];
         count = 0;
-        probingStrategy = probingStrategy;
+        this.probingStrategy = probingStrategy;
+
     }
 
     public int GetBucketIndex(TKey key, int capacity)

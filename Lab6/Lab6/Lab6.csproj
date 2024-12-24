@@ -1,38 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <TargetFramework>net8.0-windows</TargetFramework>
-        <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <UseWPF>true</UseWPF>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Folder Include="UI\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="UI\Font\EuclidSquare-Bold.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-Bold.ttf" />
-      <None Remove="UI\Font\EuclidSquare-BoldItalic.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-BoldItalic.ttf" />
-      <None Remove="UI\Font\EuclidSquare-Italic.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-Italic.ttf" />
-      <None Remove="UI\Font\EuclidSquare-Light.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-Light.ttf" />
-      <None Remove="UI\Font\EuclidSquare-LightItalic.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-LightItalic.ttf" />
-      <None Remove="UI\Font\EuclidSquare-Medium.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-Medium.ttf" />
-      <None Remove="UI\Font\EuclidSquare-MediumItalic.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-MediumItalic.ttf" />
-      <None Remove="UI\Font\EuclidSquare-Regular.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-Regular.ttf" />
-      <None Remove="UI\Font\EuclidSquare-SemiBold.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-SemiBold.ttf" />
-      <None Remove="UI\Font\EuclidSquare-SemiBoldItalic.ttf" />
-      <Resource Include="UI\Font\EuclidSquare-SemiBoldItalic.ttf" />
-    </ItemGroup>
 
 </Project>
