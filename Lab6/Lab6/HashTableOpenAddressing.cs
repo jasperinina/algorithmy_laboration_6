@@ -83,7 +83,7 @@ public class HashTableOpenAddressing<TKey, TValue>
         int originalIndex = index;
         int step = 0;
 
-        while (!entries[index].IsDeleted && entries[index].Key != null)
+        while (!entries[index].IsDeleted && entries[index].Key == null)
         {
             if (entries[index].Key.Equals(key))
             {
@@ -94,10 +94,6 @@ public class HashTableOpenAddressing<TKey, TValue>
             step++;
             index = probingStrategy.Probe(originalIndex, step, entries.Length, key);
 
-            if (index == originalIndex)
-            {
-                throw new InvalidOperationException("Хэш-таблица переполнена.");
-            }
         }
 
         entries[index].Key = key;
@@ -217,7 +213,7 @@ public class HashTableOpenAddressing<TKey, TValue>
                 int index = GetBucketIndex(entry.Key, newCapacity);
                 int step = 0;
 
-                while (newEntries[index].Key != null)
+                while (newEntries[index].Key == null)
                 {
                     step++;
                     index = probingStrategy.Probe(index, step, newCapacity, entry.Key);
